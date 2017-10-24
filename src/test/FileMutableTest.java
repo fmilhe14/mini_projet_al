@@ -9,6 +9,7 @@ class FileMutableTest {
 
     @Test
     void ajouter() {
+      
         FabriqueFileMutable fab = new FabriqueFileMutable() {};
         File file = fab.fileMutable();
 
@@ -26,6 +27,7 @@ class FileMutableTest {
 
         FabriqueFileMutable fab = new FabriqueFileMutable() {};
         File file = fab.fileMutable();
+
         file.ajouter(1);
         assertEquals(1, file.tete());
 
@@ -36,6 +38,7 @@ class FileMutableTest {
 
         FabriqueFileMutable fab = new FabriqueFileMutable() {};
         File file = fab.fileMutable();
+
         file.ajouter(1);
         file.ajouter(2);
         file.ajouter(3);
