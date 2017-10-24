@@ -5,7 +5,7 @@ import java.util.List;
  * Created by francoismilhem on 24/10/2017.
  * Première implémentation mutable de l'interface File, implémentée avec une LinkedList
  */
-public class FileMutable<T> implements File<T> {
+public class FileMutable<T> implements File<T>, FabriqueFileMutable {
     private List<T> list;
 
 
