@@ -3,19 +3,20 @@ import java.util.List;
 
 /**
  * Created by francoismilhem on 24/10/2017.
+ * Première implémentation mutable de l'interface File, implémentée avec une LinkedList
  */
 public class FileMutable<T> implements File<T> {
-
     private List<T> list;
 
-    public FileMutable(LinkedList list){
+
+    public FileMutable(LinkedList list) {
 
         this.list = list;
     }
 
-    public FileMutable(){
+    public FileMutable() {
 
-        this.list = new LinkedList<T>();
+        this(new LinkedList<T>());
     }
 
     @Override
@@ -27,7 +28,7 @@ public class FileMutable<T> implements File<T> {
     @Override
     public T tete() throws IndexOutOfBoundsException {
 
-        if(!this.estVide()) {
+        if (!this.estVide()) {
             return this.list.get(0);
         }
 
@@ -37,11 +38,24 @@ public class FileMutable<T> implements File<T> {
     @Override
     public T retirer() {
 
-        if(!this.estVide()) {
+        if (!this.estVide()) {
             return this.list.remove(0);
         }
 
         throw new IndexOutOfBoundsException();
 
     }
+
+    @Override
+    public int size() {
+
+        return this.list.size();
+    }
+
+    @Override
+    public boolean estVide() {
+
+        return this.list.isEmpty();
+    }
 }
+
