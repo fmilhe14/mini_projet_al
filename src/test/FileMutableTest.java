@@ -1,4 +1,6 @@
 import org.junit.jupiter.api.Test;
+import tp.v1.FabriqueFileMutable;
+import tp.v1.File;
 
 import static org.junit.jupiter.api.Assertions.*;
 

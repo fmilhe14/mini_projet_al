@@ -1,3 +1,5 @@
+package tp.v1;
+
 import java.rmi.NoSuchObjectException;
 
 /**

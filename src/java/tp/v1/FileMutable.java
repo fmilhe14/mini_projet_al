@@ -1,9 +1,11 @@
+package tp.v1;
+
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by francoismilhem on 24/10/2017.
- * Première implémentation mutable de l'interface File, implémentée avec une LinkedList
+ * Première implémentation mutable de l'interface tp.v1.File, implémentée avec une LinkedList
  */
 public class FileMutable<T> implements File<T>, FabriqueFileMutable {
 
