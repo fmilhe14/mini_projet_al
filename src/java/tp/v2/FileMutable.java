@@ -8,7 +8,7 @@ public interface FileMutable<E> extends File<E> {
 	@Override
 	default FileMutable<E> suivants(){
 		// TODO
-		return null;
+		return this.suivants();
 	}
 
 	void ajouter(E element);
@@ -27,14 +27,15 @@ public interface FileMutable<E> extends File<E> {
 	default FileMutable<E> ajout(E dernierDansFile) {
 		// TODO
 
-		this.suivants().ajouter(dernierDansFile);
+		this.ajouter(dernierDansFile);
 		return this;
 
 	}
 	@Override
 	default FileMutable<E> retrait() {
 		// TODO
-		return this.suivants();
+		 this.retirer();
+		 return this ;
 	}
 	// Complexité O(|secondeFile|)
 	@Override

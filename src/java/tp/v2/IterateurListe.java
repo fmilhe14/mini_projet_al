@@ -14,7 +14,7 @@ public class IterateurListe<E> implements Iterator<E> {
 	@Override
 	public boolean hasNext() {
 		// TODO Auto-generated method stub
-		return !liste.estVide();
+		return liste.estVide() == false ;
 	}
 
 	@Override
