@@ -4,14 +4,8 @@ import java.util.Iterator;
 
 public interface ListeMutable<E> extends Liste<E> {
 
-    // Accesseurs.
 
-    /**
-     * @return tous les éléments de la liste sauf la tête
-     */
-    default ListeMutable<E> reste() {
-        throw new UnsupportedOperationException();
-    }
+    // Accesseurs
 
     /**
      * Remplace le reste de la liste par la liste donnée en argument
@@ -23,11 +17,12 @@ public interface ListeMutable<E> extends Liste<E> {
 
     /**
      * Remplace la tête de la liste par l'élément donné en argument
-     * @param tete
+     * @param tete la nouvelle tete de la liste
      */
     default void changerTete(E tete) {
         throw new UnsupportedOperationException();
     }
+
 
     // Services
 

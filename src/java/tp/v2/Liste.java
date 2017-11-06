@@ -3,9 +3,9 @@ package tp.v2;
 import java.util.Iterator;
 
 public interface Liste<E> extends Iterable<E> {
-	/*
-	 * Accesseurs
-	 */
+
+    // Accesseurs
+
 	default boolean casVide() {
 		return false;
 	}
@@ -45,24 +45,29 @@ public interface Liste<E> extends Iterable<E> {
 		return this.taille() == 0;
 	}
 
-	/*
-	 * Services
-	 */
+
+	// Services
+
 	default Iterator<E> iterator() {
-		// TODO
-		return new IterateurListe<E>(this); // Compléter puis utiliser IterateurListe.
+		return new IterateurListe<>(this);
 	}
 
+    /**
+     * @return Une liste possédant les mêmes éléments que this, dans le sens inverse
+     */
 	default Liste<E> miroir() {
 		// TODO
 		return this;
 	}
 
-	/*
-	 * Fabriques (statiques)
-	 */
-	public static <E> Liste<E> vide() {
 
+	//  Fabriques (statiques)
+
+    /**
+     * @param <E> Le type des éléments de la liste
+     * @return Une liste vide
+     */
+	public static <E> Liste<E> vide() {
 		return new Liste<E>() {
 
 			public boolean casVide() {
@@ -72,6 +77,12 @@ public interface Liste<E> extends Iterable<E> {
 		};
 	}
 
+    /**
+     * @param t
+     * @param r
+     * @param <E> Le type des éléments de la liste
+     * @return Une liste dont la tête est le premier paramètre t, et dont le reste est le second paramètre r.
+     */
 	public static <E> Liste<E> cons(E t, Liste<E> r) {
 		return new Liste<E>() {
 
@@ -98,9 +109,7 @@ public interface Liste<E> extends Iterable<E> {
 					Iterator<E> iterator = this.iterator();
 
 					while (iterator.hasNext()) {
-
 						taille++;
-
 					}
 
 					return taille;
