@@ -1,86 +1,87 @@
 package tp.v2;
 
-import java.util.Iterator;
-
 public interface File<E> extends Iterable<E> {
 
 
-	// Accesseurs
-	E premier();
-	File<E> suivants();
-	
-	default boolean estVide() {
-		return this.taille() == 0;
-	}
-	int taille();
-	
+    // Accesseurs
 
-	// Fabriques
+    E premier();
 
-	/**
-	 * @return une file Mutable correspodant au cas d'implémentation demandé
-	 */
-	File<E> creer();
+    File<E> suivants();
+
+    default boolean estVide() {
+        return this.taille() == 0;
+    }
+
+    int taille();
 
 
-	// Services
+    // Fabriques
 
     /**
-	 * @param dernierDansFile l'élément à ajouter en queue de file
-	 * @return la File this à laquelle l'élément dernierDansFile a été ajouté en dernière position
-	 */
-	File<E> ajout(E dernierDansFile);
+     * @return une file Mutable correspodant au cas d'implémentation demandé
+     */
+    File<E> creer();
 
-	/**
-	 * @return this sans son premier élément
-	 */
-	File<E> retrait();
 
-	/**
-	 * @param secondeFile les éléments à ajouter à this
-	 * @return this à laquelle sont ajoutés les séléments du paramètre secondeFile
-	 */
-	File<E> ajout(File<E> secondeFile);
-	
-	default String representation() {
-		StringBuilder res = new StringBuilder("[ ");
-		res.append(this.premier().toString()).append(" ,");
+    // Services
 
-		File<E> suivants = this.suivants();
+    /**
+     * @param dernierDansFile l'élément à ajouter en queue de file
+     * @return la File this à laquelle l'élément dernierDansFile a été ajouté en dernière position
+     */
+    File<E> ajout(E dernierDansFile);
 
-		while(!suivants.estVide()){
-			res.append(suivants.premier()).append(" ,") ;
-		}
+    /**
+     * @return this sans son premier élément
+     */
+    File<E> retrait();
 
-		return res
-				.append(suivants.premier())
-				.append(" ]")
-				.toString();
-	}
+    /**
+     * @param secondeFile les éléments à ajouter à this
+     * @return this à laquelle sont ajoutés les séléments du paramètre secondeFile
+     */
+    File<E> ajout(File<E> secondeFile);
 
-	default boolean estEgal(File<E> file){
-		boolean estEgal = false ;
+    default String representation() {
+        StringBuilder res = new StringBuilder("[ ");
+        res.append(this.premier().toString()).append(" ,");
 
-		if(this.taille() == file.taille()){
+        File<E> suivants = this.suivants();
 
-			estEgal = this.premier() == file.premier() ;
+        while (!suivants.estVide()) {
+            res.append(suivants.premier()).append(" ,");
+        }
 
-			File<E> suivants = this.suivants();
+        return res
+                .append(suivants.premier())
+                .append(" ]")
+                .toString();
+    }
 
-			while(estEgal && !this.estVide()){
+    default boolean estEgal(File<E> file) {
+        boolean estEgal = false;
 
-				suivants = suivants.suivants();
-				file = file.retrait() ;
+        if (this.taille() == file.taille()) {
 
-				estEgal = this.premier() == file.premier() ;
+            estEgal = this.premier() == file.premier();
 
-			}
+            File<E> suivants = this.suivants();
 
-			return estEgal;
-		}
+            while (estEgal && !this.estVide()) {
 
-		return estEgal;
-	}
-	
-	
+                suivants = suivants.suivants();
+                file = file.retrait();
+
+                estEgal = this.premier() == file.premier();
+
+            }
+
+            return estEgal;
+        }
+
+        return estEgal;
+    }
+
+
 }

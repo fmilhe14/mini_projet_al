@@ -35,7 +35,19 @@ public interface Liste<E> extends Iterable<E> {
      * @return le nombre d'éléments contenus dans la liste
      */
     default public int taille() {
-        return 0;
+        try {
+            E t = tete();
+        } catch (UnsupportedOperationException e) {
+            return 0;
+        }
+
+        int taille = 0;
+
+        for (E e : this) {
+            taille++;
+        }
+
+        return taille;
     }
 
     /**
@@ -56,8 +68,6 @@ public interface Liste<E> extends Iterable<E> {
      * @return Une liste possédant les mêmes éléments que this, dans le sens inverse
      */
     default Liste<E> miroir() {
-        // TODO
-
         Iterator<E> iterator = this.iterator();
 
         if (iterator.hasNext()) {
@@ -115,29 +125,6 @@ public interface Liste<E> extends Iterable<E> {
             public Liste<E> reste() {
                 return r;
             }
-
-            @Override
-            public int taille() {
-
-                if (t != null) {
-
-                    int taille = 0;
-                    Iterator<E> iterator = this.iterator();
-
-                    while (iterator.hasNext()) {
-
-                        iterator.next();
-                        taille++;
-
-                    }
-
-                    return taille;
-                }
-
-                return 0;
-            }
-
-
         };
 
     }
