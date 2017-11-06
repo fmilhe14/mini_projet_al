@@ -52,6 +52,7 @@ public interface ListeMutable<E> extends Liste<E> {
             @Override
             public void changerReste(ListeMutable<E> reste) {
 
+
                 this.reste = reste;
             }
 
