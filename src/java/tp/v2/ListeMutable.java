@@ -68,7 +68,7 @@ public interface ListeMutable<E> extends Liste<E> {
 
                 if (t != null) {
 
-                    int taille = 1;
+                    int taille = 0;
                     Iterator<E> iterator = this.iterator();
 
                     while (iterator.hasNext()) {
@@ -87,9 +87,7 @@ public interface ListeMutable<E> extends Liste<E> {
     }
 
     public static <E> ListeMutable<E> vide() {
-        return new ListeMutable<E>() {
-
-        };
+        return new ListeMutable<E>() {};
     }
 
 }

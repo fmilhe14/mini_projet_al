@@ -19,7 +19,7 @@ class ListeMutableTest {
 
         assertEquals(2, (int) l.tete());
         assertEquals(1, (int) l.reste().tete());
-        assertEquals(2, l.taille());
+        assertEquals(3, l.taille());
 
     }
 
