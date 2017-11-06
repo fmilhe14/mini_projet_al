@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 public interface File<E> extends Iterable<E> {
 
+
 	// Accesseurs
 	E premier();
 	File<E> suivants();
@@ -13,6 +14,7 @@ public interface File<E> extends Iterable<E> {
 	}
 	int taille();
 	
+
 	// Fabriques
 
 	/**
@@ -22,7 +24,8 @@ public interface File<E> extends Iterable<E> {
 
 
 	// Services
-	/**
+
+    /**
 	 * @param dernierDansFile l'élément à ajouter en queue de file
 	 * @return la File this à laquelle l'élément dernierDansFile a été ajouté en dernière position
 	 */
@@ -56,8 +59,6 @@ public interface File<E> extends Iterable<E> {
 	}
 
 	default boolean estEgal(File<E> file){
-		// TODO
-
 		boolean estEgal = false ;
 
 		if(this.taille() == file.taille()){
