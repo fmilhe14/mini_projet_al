@@ -1,7 +1,5 @@
 package tp.v2;
 
-import java.util.Iterator;
-
 public interface ListeMutable<E> extends Liste<E> {
 
 
@@ -61,27 +59,6 @@ public interface ListeMutable<E> extends Liste<E> {
                 this.reste = ListeMutable.cons(this.tete(), this.reste);
 
                 this.tete = tete;
-            }
-
-            @Override
-            public int taille() {
-
-                if (t != null) {
-
-                    int taille = 0;
-                    Iterator<E> iterator = this.iterator();
-
-                    while (iterator.hasNext()) {
-
-                        iterator.next();
-                        taille++;
-
-                    }
-
-                    return taille;
-                }
-
-                return 0;
             }
         };
     }
