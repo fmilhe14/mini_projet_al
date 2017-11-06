@@ -2,54 +2,70 @@ package tp.v2;
 
 public interface FileMutable<E> extends File<E> {
 
-	/*
-	 * Accesseurs
-	 */
-	@Override
-	default FileMutable<E> suivants(){
-		// TODO
-		return this.suivants();
-	}
+    /*
+     * Accesseurs
+     */
+    @Override
+    default FileMutable<E> suivants() {
+        return this.suivants();
+    }
 
-	void ajouter(E element);
-	void retirer();
-	
-	/*
-	 * Fabriques
-	 */
-	FileMutable<E> creer();
-	FileMutable<E> creerCopie();
-	
-	/*
-	 * Services
-	 */
-	@Override
-	default FileMutable<E> ajout(E dernierDansFile) {
-		// TODO
+    /**
+     * ajoute l'élément en paramètre en dernière position de la File
+     * @param element
+     */
+    void ajouter(E element);
 
-		this.ajouter(dernierDansFile);
-		return this;
+    /**
+     * Retire le dernier élément de la File
+     */
+    void retirer();
 
-	}
-	@Override
-	default FileMutable<E> retrait() {
-		// TODO
-		 this.retirer();
-		 return this ;
-	}
-	// Complexité O(|secondeFile|)
-	@Override
-	default FileMutable<E> ajout(File<E> secondeFile) {
-		// TODO (même code que FileImmutable.ajout)
-		FileMutable<E> r = this;
-		for(E e : secondeFile){
-			r = r.ajout(e);
-		}
-		return r;
-	}
+    // Fabriques
 
-	
-	// Complexité en O(1).
-	void ajouter(File<E> secondeFile);
+    @Override
+    FileMutable<E> creer();
+
+    /**
+     * @return une copie de this
+     */
+    FileMutable<E> creerCopie();
+
+
+    //Services
+
+    @Override
+    default FileMutable<E> ajout(E dernierDansFile) {
+        this.ajouter(dernierDansFile);
+        return this;
+    }
+
+    @Override
+    default FileMutable<E> retrait() {
+        this.retirer();
+        return this;
+    }
+
+    /**
+     * Complexité en O(|secondeFile|)
+     *
+     * @param secondeFile les éléments à ajouter à this
+     * @return
+     */
+    @Override
+    default FileMutable<E> ajout(File<E> secondeFile) {
+        while (!secondeFile.estVide()) {
+            this.ajout(secondeFile.retrait());
+        }
+        return this;
+    }
+
+    /**
+     * Complexité en O(1)
+     *
+     * @param secondeFile les éléments à ajouter à this
+     * @return this à laquelle sont ajoutés les séléments du paramètre secondeFile
+     */
+    void ajouter(File<E> secondeFile);
 
 }

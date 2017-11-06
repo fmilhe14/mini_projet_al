@@ -2,38 +2,41 @@ package tp.v2;
 
 public interface FileImmutable<E> extends File<E> {
 
-	/* 
-	 * Accesseurs
-	 */
+	// Accesseurs
+
 	FileImmutable<E> suivants();
 	
-	/*
-	 * Fabriques
-	 */
+
+	// Fabriques
+
 	FileImmutable<E> creer();
 	FileImmutable<E> creer(E dernier);
 	
-	/*
-	 * Services
-	 */
+
+	// Services
+
 	@Override
 	default FileImmutable<E> ajout(E dernierDansFile) {
-		// TODO
 		return this.creer(dernierDansFile) ;
 	}
+
 	@Override
 	default FileImmutable<E> retrait() {
-		// TODO
 		return this.suivants();
 	}
-	// Complexité O(|secondeFile|)
+
+    /**
+     * Complexité O(|secondeFile|)
+     *
+     * @param secondeFile les éléments à ajouter à this
+     * @return La concaténation de secondeFile à this
+     */
 	@Override
 	default FileImmutable<E> ajout(File<E> secondeFile){
-		FileImmutable<E> r = this;
 		for(E e : secondeFile){
-			r = r.ajout(e);
+			this.ajout(e);
 		}
-		return r;
+		return this;
 	}
 
 }

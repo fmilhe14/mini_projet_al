@@ -1,10 +1,9 @@
 package tp.v2;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import sun.jvm.hotspot.utilities.Assert;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 /**
  * Created by francoismilhem on 05/11/2017.
@@ -18,20 +17,16 @@ class ListeMutableTest {
 
         l.changerTete(2);
 
-        Assertions.assertEquals(2,(int)l.tete());
-        Assertions.assertEquals(1,(int)l.reste().tete());
-        Assertions.assertEquals(2, l.taille());
+        assertEquals(2, (int) l.tete());
+        assertEquals(1, (int) l.reste().tete());
+        assertEquals(2, l.taille());
 
     }
 
     @Test
     void vide() {
-
-
         ListeMutable<Integer> l = ListeMutable.vide();
-
-
-        Assertions.assertEquals(0,l.taille());
+        assertEquals(0, l.taille());
     }
 
 }

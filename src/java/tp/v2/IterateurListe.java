@@ -13,14 +13,11 @@ public class IterateurListe<E> implements Iterator<E> {
 
 	@Override
 	public boolean hasNext() {
-		// TODO Auto-generated method stub
-		return liste.estVide() == false ;
+		return !liste.estVide();
 	}
 
 	@Override
 	public E next() {
-		// TODO Auto-generated method stub
-
 		E res = this.liste.tete();
 		this.liste = this.liste.reste();
 

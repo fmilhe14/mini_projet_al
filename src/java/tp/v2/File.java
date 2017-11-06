@@ -4,9 +4,7 @@ import java.util.Iterator;
 
 public interface File<E> extends Iterable<E> {
 
-	/*
-	 * Accesseurs
-	 */
+	// Accesseurs
 	E premier();
 	File<E> suivants();
 	
@@ -15,31 +13,46 @@ public interface File<E> extends Iterable<E> {
 	}
 	int taille();
 	
-	/*
-	 * Fabriques
+	// Fabriques
+
+	/**
+	 * @return une file Mutable correspodant au cas d'implémentation demandé
 	 */
 	File<E> creer();
-	
-	/*
-	 * Services
+
+
+	// Services
+	/**
+	 * @param dernierDansFile l'élément à ajouter en queue de file
+	 * @return la File this à laquelle l'élément dernierDansFile a été ajouté en dernière position
 	 */
 	File<E> ajout(E dernierDansFile);
+
+	/**
+	 * @return this sans son premier élément
+	 */
 	File<E> retrait();
+
+	/**
+	 * @param secondeFile les éléments à ajouter à this
+	 * @return this à laquelle sont ajoutés les séléments du paramètre secondeFile
+	 */
 	File<E> ajout(File<E> secondeFile);
 	
 	default String representation() {
-		// TODO 
-
-		String res = "[ "+this.premier().toString()+" ,";
+		StringBuilder res = new StringBuilder("[ ");
+		res.append(this.premier().toString()).append(" ,");
 
 		File<E> suivants = this.suivants();
 
 		while(!suivants.estVide()){
-
-			res += suivants.premier()+" ," ;
+			res.append(suivants.premier()).append(" ,") ;
 		}
 
-		return res+suivants.premier()+" ]" ;
+		return res
+				.append(suivants.premier())
+				.append(" ]")
+				.toString();
 	}
 
 	default boolean estEgal(File<E> file){

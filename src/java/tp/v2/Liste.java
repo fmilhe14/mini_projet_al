@@ -10,22 +10,37 @@ public interface Liste<E> extends Iterable<E> {
 		return false;
 	}
 
+	/**
+	 * @return L'élément de tête de la file
+	 */
 	default E tete() {
 		throw new UnsupportedOperationException();
 	}
 
+    /**
+     * @return Tous les éléments de la file sauf la tête
+     */
 	default Liste<E> reste() {
 		throw new UnsupportedOperationException();
 	}
 
+    /**
+     * @return true ssi la liste a été créée avec la fabrique
+     */
 	default boolean casCons() {
 		return false;
 	}
 
+    /**
+     * @return le nombre d'éléments contenus dans la liste
+     */
 	default public int taille() {
 		return 0;
 	}
 
+    /**
+     * @return true ssi la liste est vide
+     */
 	default public boolean estVide() {
 		return this.taille() == 0;
 	}
@@ -42,10 +57,10 @@ public interface Liste<E> extends Iterable<E> {
 		// TODO
 		return this;
 	}
+
 	/*
 	 * Fabriques (statiques)
 	 */
-
 	public static <E> Liste<E> vide() {
 
 		return new Liste<E>() {

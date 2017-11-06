@@ -1,38 +1,47 @@
-	package tp.v2;
+package tp.v2;
 
-    import java.util.Iterator;
+import java.util.Iterator;
 
-    public interface ListeMutable<E> extends Liste<E>{
+public interface ListeMutable<E> extends Liste<E> {
 
-	/*
-	 * Accesseurs.
-	 */
-	default ListeMutable<E> reste() {
-		throw new UnsupportedOperationException();
-	}
-	
-	default void changerReste(ListeMutable<E> reste) {
-		throw new UnsupportedOperationException();
-	}
-	
-	default void changerTete(E tete) {
-		throw new UnsupportedOperationException();
-	}
+    // Accesseurs.
 
-	/*
-	 * Services
-	 */
-	default ListeMutable<E> miroir(){
-		// TODO
-		return this;
-	}
+    /**
+     * @return tous les éléments de la liste sauf la tête
+     */
+    default ListeMutable<E> reste() {
+        throw new UnsupportedOperationException();
+    }
 
-	public static <E> ListeMutable<E> cons(E t, ListeMutable<E> r){
+    /**
+     * Remplace le reste de la liste par la liste donnée en argument
+     * @param reste
+     */
+    default void changerReste(ListeMutable<E> reste) {
+        throw new UnsupportedOperationException();
+    }
 
-	    return new ListeMutable<E>() {
+    /**
+     * Remplace la tête de la liste par l'élément donné en argument
+     * @param tete
+     */
+    default void changerTete(E tete) {
+        throw new UnsupportedOperationException();
+    }
 
-	        private ListeMutable<E> reste = r ;
-	        private E tete = t;
+    // Services
+
+    default ListeMutable<E> miroir() {
+        // TODO
+        return this;
+    }
+
+    public static <E> ListeMutable<E> cons(E t, ListeMutable<E> r) {
+
+        return new ListeMutable<E>() {
+
+            private ListeMutable<E> reste = r;
+            private E tete = t;
 
 
             @Override
@@ -48,17 +57,15 @@
             @Override
             public void changerReste(ListeMutable<E> reste) {
 
-                 this.reste = reste ;
+                this.reste = reste;
             }
 
             @Override
             public void changerTete(E tete) {
 
+                this.reste = ListeMutable.cons(this.tete(), this.reste);
 
-	            this.reste = ListeMutable.cons(this.tete(), this.reste);
-	            this.tete = tete ;
-
-
+                this.tete = tete;
             }
 
             @Override
@@ -82,12 +89,12 @@
                 return 0;
             }
         };
-	}
-	
-	public static <E> ListeMutable<E> vide() {
-		return new ListeMutable<E>() {
+    }
+
+    public static <E> ListeMutable<E> vide() {
+        return new ListeMutable<E>() {
 
         };
-	}
-	
+    }
+
 }
