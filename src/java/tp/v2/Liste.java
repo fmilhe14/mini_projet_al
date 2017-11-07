@@ -36,7 +36,7 @@ public interface Liste<E> extends Iterable<E> {
      */
     default public int taille() {
         try {
-            E t = tete();
+            tete();
         } catch (UnsupportedOperationException e) {
             return 0;
         }

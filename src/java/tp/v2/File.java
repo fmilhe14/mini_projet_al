@@ -44,28 +44,29 @@ public interface File<E> extends Iterable<E> {
     File<E> ajout(File<E> secondeFile);
 
     default String representation() {
-        StringBuilder res = new StringBuilder("[ ");
-        res.append(this.premier().toString()).append(" ,");
+        if (this.estVide()) {
+            return "[]";
+        }
+        StringBuilder res = new StringBuilder("[");
+        res.append(this.premier().toString()).append(", ");
 
         File<E> suivants = this.suivants();
 
         while (!suivants.estVide()) {
-            res.append(suivants.premier()).append(" ,");
+            res.append(suivants.premier()).append(", ");
         }
 
         return res
                 .append(suivants.premier())
-                .append(" ]")
+                .append("]")
                 .toString();
     }
 
     default boolean estEgal(File<E> file) {
-        boolean estEgal = false;
 
         if (this.taille() == file.taille()) {
 
-            estEgal = this.premier() == file.premier();
-
+            boolean estEgal = this.premier() == file.premier();
             File<E> suivants = this.suivants();
 
             while (estEgal && !this.estVide()) {
@@ -76,11 +77,9 @@ public interface File<E> extends Iterable<E> {
                 estEgal = this.premier() == file.premier();
 
             }
-
             return estEgal;
         }
-
-        return estEgal;
+        return false;
     }
 
 

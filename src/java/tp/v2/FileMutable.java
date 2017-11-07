@@ -7,7 +7,8 @@ public interface FileMutable<E> extends File<E> {
      */
     @Override
     default FileMutable<E> suivants() {
-        return this.suivants();
+        FileMutable<E> rep = creerCopie();
+        return rep.retrait();
     }
 
     /**
@@ -36,14 +37,16 @@ public interface FileMutable<E> extends File<E> {
 
     @Override
     default FileMutable<E> ajout(E dernierDansFile) {
-        this.ajouter(dernierDansFile);
-        return this;
+        FileMutable<E> rep = creerCopie();
+        rep.ajouter(dernierDansFile);
+        return rep;
     }
 
     @Override
     default FileMutable<E> retrait() {
-        this.retirer();
-        return this;
+        FileMutable<E> rep = creerCopie();
+        rep.retirer();
+        return rep;
     }
 
     /**
