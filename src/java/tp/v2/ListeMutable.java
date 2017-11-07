@@ -36,8 +36,7 @@ public interface ListeMutable<E> extends Liste<E> {
 
             while (iterator.hasNext()) {
 
-                miroir = ListeMutable.cons(iterator.next(), miroir);
-
+                miroir.changerTete(iterator.next());
             }
 
             return miroir ;
@@ -73,7 +72,9 @@ public interface ListeMutable<E> extends Liste<E> {
             @Override
             public void changerTete(E tete) {
 
+                this.changerReste(ListeMutable.cons(this.tete, this.reste));
                 this.tete = tete;
+
             }
 
             @Override

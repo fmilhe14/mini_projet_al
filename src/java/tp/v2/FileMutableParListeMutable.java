@@ -39,8 +39,10 @@ public class FileMutableParListeMutable<E> implements FileMutable<E> {
 
             if(this.liste.casCons()){
 
-                this.fin = ListeMutable.cons(this.liste.tete(), this.liste.reste());
+                this.fin = this.liste;
                 this.liste = ListeMutable.vide();
+
+                return this.fin.tete();
 
             }
 
@@ -59,7 +61,7 @@ public class FileMutableParListeMutable<E> implements FileMutable<E> {
 
         if(this.liste.casCons()) {
 
-            this.liste = ListeMutable.cons(element, this.liste);
+            this.liste.changerTete(element);
         }
 
         else {

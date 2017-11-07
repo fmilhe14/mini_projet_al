@@ -69,6 +69,7 @@ public interface Liste<E> extends Iterable<E> {
      * @return Une liste possédant les mêmes éléments que this, dans le sens inverse
      */
     default Liste<E> miroir() {
+
         Iterator<E> iterator = this.iterator();
 
         if (iterator.hasNext()) {
@@ -95,6 +96,7 @@ public interface Liste<E> extends Iterable<E> {
      * @return Une liste vide
      */
     public static <E> Liste<E> vide() {
+
         return new Liste<E>() {
 
             public boolean casVide() {

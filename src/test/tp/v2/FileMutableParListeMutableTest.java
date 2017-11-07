@@ -40,7 +40,6 @@ class FileMutableParListeMutableTest {
 
         assertEquals(1, (int)f.premier());
 
-
     }
 
     @Test
@@ -127,8 +126,11 @@ class FileMutableParListeMutableTest {
         assertEquals(1, (int)iterator.next());
         assertEquals(2, (int)iterator.next());
         assertEquals(false, iterator.hasNext());
+        assertEquals(2, f.taille());
 
 
     }
+
+
 
 }
