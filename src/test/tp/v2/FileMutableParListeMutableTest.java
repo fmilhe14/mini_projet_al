@@ -58,7 +58,7 @@ class FileMutableParListeMutableTest {
 
 
     @Test
-    void ajouter_integer_à_une_liste_vide(){
+    void ajouter_integer_a_une_liste_vide() {
 
         FileMutableParListeMutable<Integer> f = new FileMutableParListeMutable<>(ListeMutable.vide(),
                 ListeMutable.vide());
