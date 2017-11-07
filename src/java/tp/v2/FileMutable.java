@@ -7,7 +7,9 @@ public interface FileMutable<E> extends File<E> {
      */
     @Override
     default FileMutable<E> suivants() {
-        return this.suivants();
+        FileMutable<E> copie = this.creerCopie();
+        copie.retirer();
+        return copie;
     }
 
     /**
@@ -17,7 +19,7 @@ public interface FileMutable<E> extends File<E> {
     void ajouter(E element);
 
     /**
-     * Retire le dernier élément de la File
+     * Retire le premier élément de la File
      */
     void retirer();
 
@@ -36,14 +38,16 @@ public interface FileMutable<E> extends File<E> {
 
     @Override
     default FileMutable<E> ajout(E dernierDansFile) {
-        this.ajouter(dernierDansFile);
-        return this;
+        FileMutable<E> copie = this.creerCopie();
+        copie.ajouter(dernierDansFile);
+        return copie;
     }
 
     @Override
     default FileMutable<E> retrait() {
-        this.retirer();
-        return this;
+        FileMutable<E> copie = this.creerCopie();
+        copie.retirer();
+        return copie;
     }
 
     /**
@@ -54,10 +58,13 @@ public interface FileMutable<E> extends File<E> {
      */
     @Override
     default FileMutable<E> ajout(File<E> secondeFile) {
+
+        FileMutable<E> copie = this.creerCopie();
+
         while (!secondeFile.estVide()) {
-            this.ajout(secondeFile.retrait());
+            copie.ajout(secondeFile.retrait().premier());
         }
-        return this;
+        return copie;
     }
 
     /**

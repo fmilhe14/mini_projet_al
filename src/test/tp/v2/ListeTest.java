@@ -16,12 +16,15 @@ class ListeTest {
     void miroir() {
 
 
-        Liste<Integer> liste = Liste.cons(1, Liste.cons(2, Liste.vide()));
+        Liste<Integer> liste = Liste.cons(1, Liste.cons(2, Liste.cons(3, Liste.vide())));
 
         Liste<Integer> miroir = liste.miroir();
 
-        assertEquals(2, (int)miroir.tete());
-        assertEquals(1, (int)miroir.reste().tete());
+        assertEquals(3, (int)miroir.tete());
+        assertEquals(2, (int)miroir.reste().tete());
+        assertEquals(1, (int)miroir.reste().reste().tete());
+        assertEquals(3, (int)miroir.taille());
+
     }
 
 }

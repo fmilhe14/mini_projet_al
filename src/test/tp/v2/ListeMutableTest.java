@@ -18,8 +18,19 @@ class ListeMutableTest {
         l.changerTete(2);
 
         assertEquals(2, (int) l.tete());
-        assertEquals(1, (int) l.reste().tete());
-        assertEquals(3, l.taille());
+        assertEquals(2, l.taille());
+
+    }
+
+    @Test
+    void miroir(){
+
+        ListeMutable<Integer> l = ListeMutable.cons(2, ListeMutable.cons(1, ListeMutable.vide()));
+
+        Liste<Integer> miroir = l.miroir();
+
+        assertEquals(1, (int)miroir.tete());
+        assertEquals(2, (int)miroir.reste().tete());
 
     }
 

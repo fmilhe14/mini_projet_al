@@ -22,6 +22,7 @@ public class IterateurListe<E> implements Iterator<E> {
 
 	@Override
 	public E next() {
+
 		E res = this.liste.tete();
 		this.liste = this.liste.reste();
 

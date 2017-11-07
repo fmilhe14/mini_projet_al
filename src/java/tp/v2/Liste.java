@@ -34,9 +34,10 @@ public interface Liste<E> extends Iterable<E> {
     /**
      * @return le nombre d'éléments contenus dans la liste
      */
-    default public int taille() {
+    default int taille() {
+
         try {
-            E t = tete();
+            E tete = this.tete();
         } catch (UnsupportedOperationException e) {
             return 0;
         }
@@ -61,7 +62,7 @@ public interface Liste<E> extends Iterable<E> {
     // Services
 
     default Iterator<E> iterator() {
-        return new IterateurListe<>(this);
+        return new IterateurListe<E>(this);
     }
 
     /**

@@ -1,10 +1,15 @@
 package tp.v2;
 
+import java.util.Iterator;
+
 public interface ListeMutable<E> extends Liste<E> {
 
 
     // Accesseurs
 
+    default ListeMutable<E> reste() {
+        throw new UnsupportedOperationException();
+    }
     /**
      * Remplace le reste de la liste par la liste donnée en argument
      * @param reste
@@ -21,12 +26,24 @@ public interface ListeMutable<E> extends Liste<E> {
         throw new UnsupportedOperationException();
     }
 
+    default ListeMutable<E> miroir(){
 
-    // Services
+        Iterator<E> iterator = this.iterator();
 
-    default ListeMutable<E> miroir() {
-        // TODO
-        return this;
+        if (iterator.hasNext()) {
+
+            ListeMutable<E> miroir = ListeMutable.cons(iterator.next(), ListeMutable.vide());
+
+            while (iterator.hasNext()) {
+
+                miroir = ListeMutable.cons(iterator.next(), miroir);
+
+            }
+
+            return miroir ;
+        }
+
+        return ListeMutable.vide();
     }
 
     public static <E> ListeMutable<E> cons(E t, ListeMutable<E> r) {
@@ -50,22 +67,30 @@ public interface ListeMutable<E> extends Liste<E> {
             @Override
             public void changerReste(ListeMutable<E> reste) {
 
-
                 this.reste = reste;
             }
 
             @Override
             public void changerTete(E tete) {
 
-                this.reste = ListeMutable.cons(this.tete(), this.reste);
-
                 this.tete = tete;
+            }
+
+            @Override
+            public boolean casCons() {
+                return true;
             }
         };
     }
 
     public static <E> ListeMutable<E> vide() {
-        return new ListeMutable<E>() {};
+        return new ListeMutable<E>() {
+
+            @Override
+            public boolean casVide() {
+                return true;
+            }
+        };
     }
 
 }
