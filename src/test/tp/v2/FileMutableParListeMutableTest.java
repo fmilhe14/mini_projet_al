@@ -1,12 +1,12 @@
 package tp.v2;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
 import java.util.Iterator;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Created by francoismilhem on 06/11/2017.
@@ -16,7 +16,7 @@ class FileMutableParListeMutableTest {
     @Test
     void premier_si_fin_non_vide() {
 
-        FileMutableParListeMutable<Integer> f = new FileMutableParListeMutable(ListeMutable.cons(1, ListeMutable.vide()),
+        FileMutableParListeMutable<Integer> f = new FileMutableParListeMutable<>(ListeMutable.cons(1, ListeMutable.vide()),
                 ListeMutable.vide());
 
         assertEquals(1, (int)f.premier());
@@ -31,7 +31,7 @@ class FileMutableParListeMutableTest {
     @Test
     void premier_si_fin_vide_mais_pas_la_liste() {
 
-        FileMutableParListeMutable<Integer> f = new FileMutableParListeMutable(ListeMutable.vide(),
+        FileMutableParListeMutable<Integer> f = new FileMutableParListeMutable<>(ListeMutable.vide(),
                 ListeMutable.cons(1, ListeMutable.vide()));
 
         assertEquals(1, (int)f.premier());
@@ -46,7 +46,7 @@ class FileMutableParListeMutableTest {
     @Test
     void ajouter_un_terme_avec_la_fin_non_vide() {
 
-        FileMutableParListeMutable<Integer> f = new FileMutableParListeMutable(ListeMutable.cons(1, ListeMutable.vide()),
+        FileMutableParListeMutable<Integer> f = new FileMutableParListeMutable<>(ListeMutable.cons(1, ListeMutable.vide()),
                 ListeMutable.vide());
 
         f.ajouter(2);
@@ -60,7 +60,7 @@ class FileMutableParListeMutableTest {
     @Test
     void ajouter_integer_à_une_liste_vide(){
 
-        FileMutableParListeMutable<Integer> f = new FileMutableParListeMutable(ListeMutable.vide(),
+        FileMutableParListeMutable<Integer> f = new FileMutableParListeMutable<>(ListeMutable.vide(),
                 ListeMutable.vide());
 
 
@@ -73,7 +73,7 @@ class FileMutableParListeMutableTest {
     @Test
     void retirer() {
 
-        FileMutableParListeMutable<Integer> f = new FileMutableParListeMutable(ListeMutable.cons(1, ListeMutable.vide()),
+        FileMutableParListeMutable<Integer> f = new FileMutableParListeMutable<>(ListeMutable.cons(1, ListeMutable.vide()),
                 ListeMutable.vide());
 
 
@@ -84,11 +84,11 @@ class FileMutableParListeMutableTest {
     }
 
     @Test
-    void retirer_à_une_liste_vide() {
+    void retirer_a_une_liste_vide() {
 
-        FileMutableParListeMutable<Integer> f = new FileMutableParListeMutable(ListeMutable.vide(), ListeMutable.vide());
+        FileMutableParListeMutable<Integer> f = new FileMutableParListeMutable<>(ListeMutable.vide(), ListeMutable.vide());
 
-        Executable executable = () -> f.retirer();
+        Executable executable = f::retirer;
 
         assertThrows(UnsupportedOperationException.class, executable);
 
@@ -98,7 +98,7 @@ class FileMutableParListeMutableTest {
     @Test
     void retirer_et_verifier_que_la_liste_est_vide(){
 
-        FileMutableParListeMutable<Integer> f = new FileMutableParListeMutable(ListeMutable.vide(),
+        FileMutableParListeMutable<Integer> f = new FileMutableParListeMutable<>(ListeMutable.vide(),
                 ListeMutable.vide());
 
         f.ajouter(1);
@@ -116,7 +116,7 @@ class FileMutableParListeMutableTest {
     @Test
     void iterator() {
 
-        FileMutableParListeMutable<Integer> f = new FileMutableParListeMutable(ListeMutable.vide(),
+        FileMutableParListeMutable<Integer> f = new FileMutableParListeMutable<>(ListeMutable.vide(),
                 ListeMutable.vide());
 
         f.ajouter(1);
