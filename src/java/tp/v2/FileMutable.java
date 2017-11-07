@@ -38,6 +38,7 @@ public interface FileMutable<E> extends File<E> {
 
     @Override
     default FileMutable<E> ajout(E dernierDansFile) {
+
         FileMutable<E> copie = this.creerCopie();
         copie.ajouter(dernierDansFile);
         return copie;

@@ -5,7 +5,7 @@ import java.util.Iterator;
 /**
  * Created by francoismilhem on 07/11/2017.
  */
-public class FileImmutableParListe<E> implements File<E> {
+public class FileImmutableParListe<E> implements FileImmutable<E> {
 
 
     private Liste<E> liste;
@@ -48,7 +48,7 @@ public class FileImmutableParListe<E> implements File<E> {
     }
 
     @Override
-    public File<E> suivants() {
+    public FileImmutable<E> suivants() {
 
         if(!this.fin.casVide()){
 
@@ -71,22 +71,28 @@ public class FileImmutableParListe<E> implements File<E> {
     }
 
     @Override
-    public int taille() {
-        return this.fin.taille() + this.liste.taille();
-    }
-
-    @Override
-    public File<E> creer() {
+    public FileImmutable<E> creer() {
         return new FileImmutableParListe<E>();
     }
 
     @Override
-    public File<E> ajout(E dernierDansFile) {
+    public int taille() {
+        return this.fin.taille() + this.liste.taille();
+    }
+
+
+    @Override
+    public FileImmutable<E> creer(E dernier) {
+        return new FileImmutableParListe<E>(this.fin, Liste.cons(dernier, this.liste));
+    }
+
+    @Override
+    public FileImmutable<E> ajout(E dernierDansFile) {
         return new FileImmutableParListe<E>(this.fin, Liste.cons(dernierDansFile, this.liste));
     }
 
     @Override
-    public File<E> retrait() {
+    public FileImmutable<E> retrait() {
 
         if(!this.fin.casVide()){
 
@@ -107,7 +113,7 @@ public class FileImmutableParListe<E> implements File<E> {
     }
 
     @Override
-    public File<E> ajout(File<E> secondeFile) {
+    public FileImmutable<E> ajout(File<E> secondeFile) {
 
         Liste<E> liste = Liste.vide();
 
@@ -143,18 +149,9 @@ public class FileImmutableParListe<E> implements File<E> {
 
                     fin = liste.miroir();
                     t = fin.tete();
-
                 }
 
-                if(fin.reste().casVide()){
-
-                    fin = Liste.vide();
-                }
-
-                else {
-                    fin = Liste.cons(fin.reste().tete(), fin.reste().reste());
-                }
-
+                retrait();
                 return t ;
 
             }

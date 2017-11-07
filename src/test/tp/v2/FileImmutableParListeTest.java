@@ -2,6 +2,8 @@ package tp.v2;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Iterator;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -74,15 +76,28 @@ class FileImmutableParListeTest {
     @Test
     void retrait() {
 
+
+        FileImmutableParListe<Integer> f = new FileImmutableParListe<>(Liste.cons(1, Liste.vide()),
+                Liste.vide());
+
+        f = (FileImmutableParListe<Integer>) f.retrait();
+
+        assertEquals(0, (int)f.taille());
+
     }
 
-    @Test
-    void ajout1() {
-
-    }
 
     @Test
     void iterator() {
+
+        FileImmutableParListe<Integer> f = new FileImmutableParListe(Liste.cons(1, Liste.vide()), Liste.vide());
+
+
+        Iterator<Integer> iterator = f.iterator();
+
+        assertEquals(1, (int)iterator.next());
+        assertEquals(false, iterator.hasNext());
+        assertEquals(1, f.taille());
 
     }
 
