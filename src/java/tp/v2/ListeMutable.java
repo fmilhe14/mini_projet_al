@@ -8,6 +8,71 @@ public interface ListeMutable<E> extends Liste<E> {
     // Accesseurs
 
     /**
+     * @param <E> Le type des elements de la liste
+     * @return Une liste vide
+     */
+    public static <E> ListeMutable<E> vide() {
+        return new ListeMutable<E>() {
+
+            @Override
+            public boolean casVide() {
+                return true;
+            }
+        };
+    }
+
+    /**
+     * Remplace le reste de la liste par la liste donnée en argument
+     *
+     * @param reste
+     */
+    default void changerReste(ListeMutable<E> reste) {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * Remplace la tête de la liste par l'élément donné en argument
+     *
+     * @param tete la nouvelle tete de la liste
+     */
+    default void changerTete(E tete) {
+        throw new UnsupportedOperationException();
+    }
+
+    // Services
+
+    /**
+     * @return une liste mutable d'éléments de type E
+     */
+    default ListeMutable<E> reste() {
+        throw new UnsupportedOperationException();
+    }
+
+    // Fabriques (statiques)
+
+    /**
+     * @return Une copie de this dont la position des elements est inversee
+     */
+    default ListeMutable<E> miroir() {
+
+        Iterator<E> iterator = this.iterator();
+
+        if (iterator.hasNext()) {
+
+            ListeMutable<E> miroir = ListeMutable.cons(iterator.next(), ListeMutable.vide());
+
+            while (iterator.hasNext()) {
+
+                miroir.changerTete(iterator.next());
+            }
+
+            return miroir;
+        }
+
+        return ListeMutable.vide();
+    }
+
+    /**
      * @param t la tete de la liste
      * @param r le reste de la liste
      * @param <E> Le type des elements de la liste
@@ -50,67 +115,6 @@ public interface ListeMutable<E> extends Liste<E> {
                 return true;
             }
         };
-    }
-
-    /**
-     * Remplace le reste de la liste par la liste donnée en argument
-     *
-     * @param reste
-     */
-    default void changerReste(ListeMutable<E> reste) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Remplace la tête de la liste par l'élément donné en argument
-     *
-     * @param tete la nouvelle tete de la liste
-     */
-    default void changerTete(E tete) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * @param <E> Le type des elements de la liste
-     * @return Une liste vide
-     */
-    public static <E> ListeMutable<E> vide() {
-        return new ListeMutable<E>() {
-
-            @Override
-            public boolean casVide() {
-                return true;
-            }
-        };
-    }
-
-    /**
-     * @return une liste mutable d'éléments de type E
-     */
-    default ListeMutable<E> reste() {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * @return Une copie de this dont la position des elements est inversee
-     */
-    default ListeMutable<E> miroir() {
-
-        Iterator<E> iterator = this.iterator();
-
-        if (iterator.hasNext()) {
-
-            ListeMutable<E> miroir = ListeMutable.cons(iterator.next(), ListeMutable.vide());
-
-            while (iterator.hasNext()) {
-
-                miroir.changerTete(iterator.next());
-            }
-
-            return miroir;
-        }
-
-        return ListeMutable.vide();
     }
 
 }
