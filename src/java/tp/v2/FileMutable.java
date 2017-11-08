@@ -2,9 +2,8 @@ package tp.v2;
 
 public interface FileMutable<E> extends File<E> {
 
-    /*
-     * Accesseurs
-     */
+    // Accesseurs
+
     @Override
     default FileMutable<E> suivants() {
         FileMutable<E> copie = this.creerCopie();
@@ -13,15 +12,16 @@ public interface FileMutable<E> extends File<E> {
     }
 
     /**
-     * ajoute l'élément en paramètre en dernière position de la File
+     * ajoute l'element en parametre en derniere position de la File
      * @param element
      */
     void ajouter(E element);
 
     /**
-     * Retire le premier élément de la File
+     * Retire le premier element de la File
      */
     void retirer();
+
 
     // Fabriques
 
@@ -51,12 +51,6 @@ public interface FileMutable<E> extends File<E> {
         return copie;
     }
 
-    /**
-     * Complexité en O(|secondeFile|)
-     *
-     * @param secondeFile les éléments à ajouter à this
-     * @return
-     */
     @Override
     default FileMutable<E> ajout(File<E> secondeFile) {
 
@@ -69,10 +63,10 @@ public interface FileMutable<E> extends File<E> {
     }
 
     /**
-     * Complexité en O(1)
+     * Complexite en O(1)
      *
-     * @param secondeFile les éléments à ajouter à this
-     * @return this à laquelle sont ajoutés les séléments du paramètre secondeFile
+     * @param secondeFile les elements a ajouter a this
+     * @return this a laquelle sont ajoutes les selements du parametre secondeFile
      */
     void ajouter(File<E> secondeFile);
 

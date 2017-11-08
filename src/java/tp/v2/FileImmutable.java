@@ -4,12 +4,20 @@ public interface FileImmutable<E> extends File<E> {
 
 	// Accesseurs
 
+	/**
+	 * @return tous les elements de la liste sauf le premier
+	 */
 	FileImmutable<E> suivants();
 	
 
 	// Fabriques
 
 	FileImmutable<E> creer();
+
+	/**
+	 * @param dernier l'element a ajouter en fin de liste
+	 * @return Une nouvelle file a partir de this avec dernier pour element supplementaire
+	 */
 	FileImmutable<E> creer(E dernier);
 	
 
@@ -25,12 +33,6 @@ public interface FileImmutable<E> extends File<E> {
 		return this.suivants();
 	}
 
-    /**
-     * Complexité O(|secondeFile|)
-     *
-     * @param secondeFile les éléments à ajouter à this
-     * @return La concaténation de secondeFile à this
-     */
 	@Override
 	default FileImmutable<E> ajout(File<E> secondeFile){
 		for(E e : secondeFile){

@@ -5,21 +5,33 @@ public interface File<E> extends Iterable<E> {
 
     // Accesseurs
 
+    /**
+     * @return Le premier element de la liste
+     */
     E premier();
 
+    /**
+     * @return tous les elements de la liste sauf le premier
+     */
     File<E> suivants();
 
+    /**
+     * @return true ssi la liste est vide
+     */
     default boolean estVide() {
         return this.taille() == 0;
     }
 
+    /**
+     * @return le nombre d'elements dans la liste
+     */
     int taille();
 
 
     // Fabriques
 
     /**
-     * @return une file Mutable correspodant au cas d'implémentation demandé
+     * @return une file vide
      */
     File<E> creer();
 
@@ -27,22 +39,27 @@ public interface File<E> extends Iterable<E> {
     // Services
 
     /**
-     * @param dernierDansFile l'élément à ajouter en queue de file
-     * @return la File this à laquelle l'élément dernierDansFile a été ajouté en dernière position
+     * @param dernierDansFile l'element a ajouter en queue de file
+     * @return la File this a laquelle l'element dernierDansFile a ete ajoute en derniere position
      */
     File<E> ajout(E dernierDansFile);
 
     /**
-     * @return this sans son premier élément
+     * @return this sans son premier element
      */
     File<E> retrait();
 
     /**
-     * @param secondeFile les éléments à ajouter à this
-     * @return this à laquelle sont ajoutés les séléments du paramètre secondeFile
+     * Complexité O(|secondeFile|)
+     *
+     * @param secondeFile les elements a ajouter a this
+     * @return this a laquelle sont ajoutes les selements du parametre secondeFile
      */
     File<E> ajout(File<E> secondeFile);
 
+    /**
+     * @return Une chaine de caracteres lisible par l'homme representant la liste
+     */
     default String representation() {
         StringBuilder res = new StringBuilder("[ ");
         res.append(this.premier().toString()).append(" ,");
@@ -59,12 +76,15 @@ public interface File<E> extends Iterable<E> {
                 .toString();
     }
 
+    /**
+     * @param file la file a comparer a this
+     * @return true ssi this est egal au parametre file
+     */
     default boolean estEgal(File<E> file) {
-        boolean estEgal = false;
 
         if (this.taille() == file.taille()) {
 
-            estEgal = this.premier() == file.premier();
+            boolean estEgal = this.premier() == file.premier();
 
             File<E> suivants = this.suivants();
 
@@ -76,11 +96,9 @@ public interface File<E> extends Iterable<E> {
                 estEgal = this.premier() == file.premier();
 
             }
-
             return estEgal;
         }
-
-        return estEgal;
+        return false;
     }
 
 
