@@ -76,7 +76,7 @@ public class FileMutableParListeMutable<E> implements FileMutable<E> {
 
             if(this.liste.casVide()){
 
-                throw new UnsupportedOperationException("La File est vide");
+                throw new UnsupportedOperationException("File has no elements");
             }
 
             else {
