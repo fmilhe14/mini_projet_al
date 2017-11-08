@@ -1,4 +1,4 @@
-package tp.v2;
+package tp.v3;
 
 import java.util.Iterator;
 
@@ -15,7 +15,7 @@ public class FileMutableParListeMutable<E> implements FileMutable<E> {
         this.liste = liste;
         this.fin = fin;
 
-        if(this.fin.casVide() && !this.liste.casVide()){
+        if (this.fin.casVide() && !this.liste.casVide()) {
             this.fin = this.liste.miroir();
             this.liste = ListeMutable.vide();
         }
@@ -31,13 +31,11 @@ public class FileMutableParListeMutable<E> implements FileMutable<E> {
     @Override
     public E premier() {
 
-        if(this.fin.casCons()) {
+        if (this.fin.casCons()) {
             return this.fin.tete();
-        }
+        } else {
 
-        else {
-
-            if(this.liste.casCons()){
+            if (this.liste.casCons()) {
 
                 this.fin = this.liste;
                 this.liste = ListeMutable.vide();
@@ -59,12 +57,10 @@ public class FileMutableParListeMutable<E> implements FileMutable<E> {
     @Override
     public void ajouter(E element) {
 
-        if(this.liste.casCons()) {
+        if (this.liste.casCons()) {
 
             this.liste.changerTete(element);
-        }
-
-        else {
+        } else {
             this.liste = ListeMutable.cons(element, ListeMutable.vide());
         }
     }
@@ -72,26 +68,22 @@ public class FileMutableParListeMutable<E> implements FileMutable<E> {
     @Override
     public void retirer() {
 
-        if(this.fin.casVide()) {
+        if (this.fin.casVide()) {
 
-            if(this.liste.casVide()){
+            if (this.liste.casVide()) {
 
                 throw new UnsupportedOperationException("La File est vide");
-            }
-
-            else {
+            } else {
 
                 this.fin = this.liste.miroir().reste();
                 this.liste = ListeMutable.vide();
             }
 
-        }
-
-        else {
+        } else {
 
             this.fin = this.fin.reste();
 
-            if(this.fin.estVide()){
+            if (this.fin.estVide()) {
 
                 this.fin = ListeMutable.vide();
             }
@@ -112,7 +104,7 @@ public class FileMutableParListeMutable<E> implements FileMutable<E> {
     @Override
     public void ajouter(File<E> secondeFile) {
 
-        while(!secondeFile.estVide()){
+        while (!secondeFile.estVide()) {
 
             this.ajouter(secondeFile.premier());
             secondeFile = secondeFile.retrait();
@@ -135,29 +127,27 @@ public class FileMutableParListeMutable<E> implements FileMutable<E> {
 
                 E t;
 
-                if(!fin.casVide()) {
+                if (!fin.casVide()) {
 
-                     t = fin.tete();
-                }
-
-                else {
+                    t = fin.tete();
+                } else {
 
                     fin = liste.miroir();
                     t = fin.tete();
 
                 }
 
-                    retirer();
-                    return t;
+                retirer();
+                return t;
             }
         };
     }
 
-    public ListeMutable<E> getListe(){
+    public ListeMutable<E> getListe() {
         return this.liste;
     }
 
-    public ListeMutable<E> getFin(){
+    public ListeMutable<E> getFin() {
         return this.fin;
     }
 }
