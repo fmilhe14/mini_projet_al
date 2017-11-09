@@ -13,7 +13,7 @@ public interface FileMutable<E> extends File<E> {
 
     /**
      * ajoute l'element en parametre en derniere position de la File
-     * @param element
+     * @param element l'element a ajouter en fin de liste
      */
     void ajouter(E element);
 
@@ -66,7 +66,6 @@ public interface FileMutable<E> extends File<E> {
      * Complexite en O(1)
      *
      * @param secondeFile les elements a ajouter a this
-     * @return this a laquelle sont ajoutes les selements du parametre secondeFile
      */
     void ajouter(File<E> secondeFile);
 

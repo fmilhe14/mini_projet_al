@@ -24,7 +24,7 @@ public interface ListeMutable<E> extends Liste<E> {
     /**
      * Remplace le reste de la liste par la liste donnée en argument
      *
-     * @param reste
+     * @param reste la liste a concaténer a la fin de this.
      */
     default void changerReste(ListeMutable<E> reste) {
         throw new UnsupportedOperationException();
