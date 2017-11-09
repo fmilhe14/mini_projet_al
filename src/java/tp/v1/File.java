@@ -1,4 +1,4 @@
-import java.rmi.NoSuchObjectException;
+package tp.v1;
 
 /**
  * Created by francoismilhem on 24/10/2017.
@@ -6,21 +6,21 @@ import java.rmi.NoSuchObjectException;
 public interface File<T> {
 
     /**
-     * ajoute un élément à la queue de file
-      * @param o l'objet à ajouter
+     * ajoute un element a la queue de file
+     * @param o l'objet a ajouter
      */
     void ajouter(T o);
 
 
     /**
-     * @return l'élément en tête de la file
-     * @throws IndexOutOfBoundsException
+     * @return l'element en tete de la file
+     * @throws IndexOutOfBoundsException si la tete n'existe pas (ssi la liste est vide)
      */
     T tete() throws IndexOutOfBoundsException;
 
 
     /**
-     * @return l'élément en tête de la file, après l'avoir retiré
+     * @return l'element en tete de la file, apres l'avoir retire
      */
     T retirer() throws IndexOutOfBoundsException;
 
