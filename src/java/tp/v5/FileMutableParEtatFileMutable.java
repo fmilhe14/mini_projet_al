@@ -5,66 +5,47 @@ import java.util.Iterator;
 /**
  * Created by francoismilhem on 22/11/2017.
  */
-public class FileMutableParEtatFileMutable<E> implements EtatFileMutable<E> {
+public class FileMutableParEtatFileMutable<E>  {
 
-    private ListeMutable<E> listeMutable;
+    private EtatFileMutable<E> etatFileMutable;
 
-    public FileMutableParEtatFileMutable(ListeMutable listeMutable){
+    public FileMutableParEtatFileMutable(EtatFileMutable etatFileMutable){
 
-        this.listeMutable = listeMutable;
+
+        this.etatFileMutable = etatFileMutable;
     }
 
-    @Override
-    public int taille() {
-        return this.listeMutable.taille();
+    public E premier(){
+
+        return etatFileMutable.premier();
     }
 
-    @Override
-    public E premier() {
-        return this.listeMutable.tete();
+    public EtatFileMutable suivants(){
+
+        return etatFileMutable.suivants();
     }
 
-    @Override
-    public EtatFileMutable<E> creer() {
-        return new FileMutableParEtatFileMutable<E>(this.listeMutable);
-    }
+    public EtatFileMutable creer(){
 
-    @Override
-    public EtatFileMutable<E> ajout(E dernierDansFile) {
-        this.listeMutable.changerTete(dernierDansFile);
-        return this;
-    }
-
-    @Override
-    public EtatFileMutable<E> retrait() {
-
-        ListeMutable<E> copie = ListeMutable.cons(this.listeMutable.tete(), this.listeMutable.reste());
-
-        copie.changerTete(copie.reste().tete());
-        copie.changerReste(copie.reste().reste());
-        return new FileMutableParEtatFileMutable<>(copie) ;
-
+        return etatFileMutable.creer();
     }
 
 
-    @Override
-    public EtatFileMutable<E> creerCopie() {
-        return new FileMutableParEtatFileMutable<E>(this.listeMutable);
+    public EtatFileMutable ajout(E dernierDansFile){
+
+        this.etatFileMutable =  etatFileMutable.ajout(dernierDansFile);
+        return this.etatFileMutable;
     }
 
-    @Override
-    public Iterator<E> iterator() {
+    public EtatFileMutable retrait(){
 
-        return new Iterator<E>() {
-            @Override
-            public boolean hasNext() {
-                return false;
-            }
-
-            @Override
-            public E next() {
-                return null;
-            }
-        };
+        this.etatFileMutable =  etatFileMutable.retrait();
+        return this.etatFileMutable;
     }
+
+    public int taille(){
+
+        return etatFileMutable.taille();
+    }
+
 }

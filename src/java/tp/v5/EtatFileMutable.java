@@ -10,7 +10,6 @@ public interface EtatFileMutable<E> extends EtatFile<EtatFileMutable<E>, E>, Ide
         this.ajout(element);
     }
 
-
     default void retirer(){
 
         this.retirer();
