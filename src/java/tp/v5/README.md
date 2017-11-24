@@ -18,3 +18,8 @@ qu'elles utilisent pour être implémenter.
 Complexité des opérations:
 
 FileMutable : ajout O(1) - retrait O(1) - taille O(1)
+
+Tests :
+Classe v5.Test , compare la vitesse entre la File mutable et la File Immutable en terme d'ajout et de
+retrait
+
