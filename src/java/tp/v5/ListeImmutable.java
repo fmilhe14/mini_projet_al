@@ -6,30 +6,26 @@ public interface ListeImmutable<E> extends
 	RepresentableParIteration<E>
 {
 
-	/*
-	 * Accesseurs.
-	 */
-	/*
-	 * Fabriques
-	 */
-	
-	@Override
+    // Fabriques
+
+    @Override
 	default ListeImmutable<E> creer() {
 		return vide();
 	}
+
 	@Override
 	default ListeImmutable<E> creer(E e) {
 		return cons(e, this);
 	}
 
-	/*
-	 * Services
-	 */
 
+    // Fabriques statiques.
 
-	/*
-	 * Fabriques statiques.
-	 */
+    /**
+     * Fabrique.
+     * @param <E> le type des éléments de la liste.
+     * @return une liste vide.
+     */
 	public static <E> ListeImmutable<E> vide() {
 		return new ListeImmutable<E>() {
 			@Override
@@ -49,8 +45,16 @@ public interface ListeImmutable<E> extends
 			}		
 		};
 	}
-	
-	public static <E> ListeImmutable<E> cons(E t, ListeImmutable<E> r) {
+
+    /**
+     * Fabrique.
+     *
+     * @param t   l'élément en tête de la liste.
+     * @param r   les autres éléments de la liste.
+     * @param <E> le type des éléments de la lise.
+     * @return Une liste ayant t pour premier élément et r pour reste.
+     */
+    public static <E> ListeImmutable<E> cons(E t, ListeImmutable<E> r) {
 		return new ListeImmutable<E>() {
 			private ListeImmutable<E> reste = r;
 			private int taille = r.taille() + 1;
