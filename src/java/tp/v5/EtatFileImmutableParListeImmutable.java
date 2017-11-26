@@ -4,6 +4,8 @@ import java.util.Iterator;
 
 /**
  * Created by francoismilhem on 23/11/2017.
+ * Classe implémentant l'état d'une file immutable par une liste immutable.
+ * @param <E> Le type des éléments de la file.
  */
 public class EtatFileImmutableParListeImmutable<E> implements EtatFileImmutable<E> {
 
