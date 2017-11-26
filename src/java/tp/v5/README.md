@@ -19,6 +19,8 @@ Complexité des opérations:
 
 FileMutable : ajout O(1) - retrait O(1) - taille O(1)
 
+Javadoc : une Javadoc au format html est générée dans le projet dans le dossier doc. 
+
 Tests :
 Classe v5.Test , compare la vitesse entre la File mutable et la File Immutable en terme d'ajout et de
 retrait
