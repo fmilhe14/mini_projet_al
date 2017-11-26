@@ -1,5 +1,12 @@
 package tp.v5;
 
+/**
+ * Interface représentant un objet ayant la propriété d'être mesurable.
+ */
 public interface Mesurable {
-	int taille();
+
+    /**
+     * @return la taille de l'objet.
+     */
+    int taille();
 }
