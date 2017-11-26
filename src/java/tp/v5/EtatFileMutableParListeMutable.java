@@ -4,16 +4,26 @@ import java.util.Iterator;
 
 /**
  * Created by francoismilhem on 23/11/2017.
+ * Classe implémentant l'état d'une file mutable par une liste mutable.
+ * @param <E> Le type des éléments de la file.
  */
 public class EtatFileMutableParListeMutable<E> implements EtatFileMutable<E> {
 
     private ListeMutable<E> listeMutable;
 
+    /**
+     * Constructeur file vide.
+     */
     public EtatFileMutableParListeMutable(){
 
         this.listeMutable = ListeMutable.vide();
     }
 
+    /**
+     * Constructeur pour une file non vide.
+     *
+     * @param listeMutable
+     */
     public EtatFileMutableParListeMutable(ListeMutable listeMutable){
 
         this.listeMutable = listeMutable;
