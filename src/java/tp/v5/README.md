@@ -11,8 +11,8 @@ Principes de nommage suivis :
 Les interfaces représentant l'Etat d'une file sont préfixés du nom "Etat"
 Les classes qui implémentent les interfaces d'Etat sont préfixé par le type d'état que l'on implémente
 et suffixé par le type de liste qu'on utilise pour représenter l'état.
-Enfin, les classes préfixées par File et suffixé par l'état représentent les files et l'état
-qu'elles utilisent pour être implémenter.
+Enfin, les classes préfixées par File et suffixées par l'état représentent les files et l'état
+qu'elles utilisent pour être implémentées.
 
 
 Complexité des opérations:
