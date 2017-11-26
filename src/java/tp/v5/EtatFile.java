@@ -2,6 +2,8 @@ package tp.v5;
 
 /**
  * Created by francoismilhem on 22/11/2017.
+ * @param <K> le type d'implémentation de la file.
+ * @param <E> Le type des éléments de la file.
  */
 public interface EtatFile<K extends EtatFile<K, E>, E> extends Iterable<E>, Mesurable {
 
