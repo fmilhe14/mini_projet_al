@@ -9,11 +9,19 @@ public class EtatFileImmutableParListeImmutable<E> implements EtatFileImmutable<
 
     private ListeImmutable<E> listeImmutable;
 
+    /**
+     * Constructeur pour file vide.
+     */
     public EtatFileImmutableParListeImmutable(){
 
         this.listeImmutable = ListeImmutable.vide();
     }
 
+    /**
+     * Constructeur pour une file non vide.
+     *
+     * @param listeImmutable
+     */
     public EtatFileImmutableParListeImmutable(ListeImmutable listeImmutable){
 
         this.listeImmutable = listeImmutable;
